@@ -1,6 +1,6 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:home_manager/pages/wrapper_page.dart';
-import 'package:home_manager/services/inventory_provider.dart';
+import 'package:home_manager/services/store_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.purple,
         brightness: Brightness.dark,
       ),
-      home: ChangeNotifierProvider<InventoryProvider>(
-        create: (_) => InventoryProvider(),
+      home: ChangeNotifierProvider<StoreProvider>(
+        create: (_) => StoreProvider(),
         child: const WrapperPage(title: 'Home Manager'),
       ),
     );

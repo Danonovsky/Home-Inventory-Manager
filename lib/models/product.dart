@@ -11,3 +11,13 @@ class Product {
     this.price = 0,
   });
 }
+
+class ProductEntry {
+  Product product;
+  int quantity;
+
+  ProductEntry({
+    required this.product,
+    this.quantity = 0,
+  });
+}

@@ -1,25 +1,20 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:home_manager/models/product.dart';
 import 'package:home_manager/services/store_provider.dart';
-import 'package:home_manager/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
-class InventoryPage extends StatefulWidget {
-  const InventoryPage({super.key});
+class RoomPage extends StatefulWidget {
+  const RoomPage({super.key});
   @override
-  State<InventoryPage> createState() => _InventoryPageState();
+  State<RoomPage> createState() => _RoomPageState();
 }
 
-class _InventoryPageState extends State<InventoryPage> {
+class _RoomPageState extends State<RoomPage> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<StoreProvider>(context);
-    void onClickDelete(index) async {
-      if (await showAreYouSureDialog(context) == false) return;
-      provider.deleteProduct(index);
-    }
-
+    return const Text('Elo');
     return Column(
       children: [
         Center(
@@ -53,7 +48,7 @@ class _InventoryPageState extends State<InventoryPage> {
                     Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: FilledButton(
-                        onPressed: () => onClickDelete(index),
+                        onPressed: () => provider.deleteProduct(index),
                         child: const Icon(FluentIcons.delete),
                       ),
                     ),
