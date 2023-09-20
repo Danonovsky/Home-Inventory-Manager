@@ -3,7 +3,6 @@ import 'package:home_manager/models/product.dart';
 import 'package:home_manager/services/store_provider.dart';
 import 'package:home_manager/utils.dart';
 import 'package:provider/provider.dart';
-import 'package:uuid/uuid.dart';
 
 class InventoryPage extends StatefulWidget {
   const InventoryPage({super.key});
@@ -27,9 +26,7 @@ class _InventoryPageState extends State<InventoryPage> {
             padding: const EdgeInsets.all(8.0),
             child: FilledButton(
               child: const Icon(FluentIcons.add, size: 24.0),
-              onPressed: () => provider.addProduct(Product(
-                id: const Uuid().v4(),
-              )),
+              onPressed: () => provider.addProduct(Product()),
             ),
           ),
         ),

@@ -1,15 +1,18 @@
+import 'package:uuid/uuid.dart';
+
 class Product {
-  String id;
+  String id = "";
   String name;
   String url;
   double price;
 
   Product({
-    this.id = "",
     this.name = "Default Product",
     this.url = "",
     this.price = 0,
-  });
+  }) {
+    id = const Uuid().v4();
+  }
 }
 
 class ProductEntry {
