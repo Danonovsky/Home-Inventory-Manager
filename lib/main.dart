@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
     return FluentApp(
       debugShowCheckedModeBanner: false,
       title: 'Home Manager',
-      color: Colors.red,
       theme: FluentThemeData(
         accentColor: Colors.purple,
         brightness: Brightness.dark,

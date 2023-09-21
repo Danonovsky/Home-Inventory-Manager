@@ -19,8 +19,6 @@ class _HomePageState extends State<HomePage> {
     var provider = Provider.of<StoreProvider>(context);
 
     void deleteRoom(index) async {
-      debugPrint(index.toString());
-      debugPrint(provider.rooms.length.toString());
       if (await showAreYouSureDialog(context) == false) return;
       provider.deleteRoom(index);
     }
@@ -46,11 +44,7 @@ class _HomePageState extends State<HomePage> {
       currentIndex: _index,
       closeButtonVisibility: CloseButtonVisibilityMode.always,
       onChanged: (index) => setState(() => _index = index),
-      onNewPressed: () {
-        setState(() {
-          provider.rooms.add(Room(name: "New Room"));
-        });
-      },
+      onNewPressed: () => provider.addRoom(Room(name: "New Room")),
     );
   }
 }

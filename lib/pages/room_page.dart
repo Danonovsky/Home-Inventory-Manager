@@ -15,6 +15,11 @@ class _RoomPageState extends State<RoomPage> {
   @override
   Widget build(BuildContext context) {
     // var provider = Provider.of<StoreProvider>(context);
-    return Text(room.name);
+    return Container(
+      color: Colors.blue,
+      child: Center(
+        child: Text(room.name),
+      ),
+    );
   }
 }

@@ -14,7 +14,7 @@ class _InventoryPageState extends State<InventoryPage> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<StoreProvider>(context);
-    void onClickDelete(index) async {
+    void deleteProduct(index) async {
       if (await showAreYouSureDialog(context) == false) return;
       provider.deleteProduct(index);
     }
@@ -24,7 +24,7 @@ class _InventoryPageState extends State<InventoryPage> {
         Center(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: FilledButton(
+            child: Button(
               child: const Icon(FluentIcons.add, size: 24.0),
               onPressed: () => provider.addProduct(Product()),
             ),
@@ -50,7 +50,7 @@ class _InventoryPageState extends State<InventoryPage> {
                     Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: FilledButton(
-                        onPressed: () => onClickDelete(index),
+                        onPressed: () => deleteProduct(index),
                         child: const Icon(FluentIcons.delete),
                       ),
                     ),
