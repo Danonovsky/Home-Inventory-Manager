@@ -11,6 +11,71 @@ class InventoryPage extends StatefulWidget {
 }
 
 class _InventoryPageState extends State<InventoryPage> {
+  addProduct(StoreProvider provider) async {
+    var nameController = TextEditingController();
+    var urlController = TextEditingController();
+    var price = 0.0;
+    final result = await showDialog<Product?>(
+      context: context,
+      builder: (context) => ContentDialog(
+        title: const Text('Add New Product'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            InfoLabel(
+              label: 'Name',
+              child: TextBox(
+                controller: nameController,
+                placeholder: 'Name',
+                expands: false,
+              ),
+            ),
+            InfoLabel(
+              label: 'Url',
+              child: TextBox(
+                controller: urlController,
+                placeholder: 'Url',
+                expands: false,
+              ),
+            ),
+            InfoLabel(
+              label: 'Price',
+              child: NumberBox(
+                value: price,
+                onChanged: (value) => price = value ?? 0,
+                placeholder: '0.00',
+                smallChange: 0.01,
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          FilledButton(
+            child: const Text('Add'),
+            onPressed: () {
+              if (nameController.text.isEmpty) {
+                return;
+              }
+              Navigator.pop(
+                  context,
+                  Product(
+                    name: nameController.text,
+                    url: urlController.text,
+                    price: price,
+                  ));
+            },
+          ),
+          Button(
+            child: const Text('Cancel'),
+            onPressed: () => Navigator.pop(context, null),
+          ),
+        ],
+      ),
+    );
+    if (result == null) return;
+    provider.addProduct(result);
+  }
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<StoreProvider>(context);
@@ -26,7 +91,7 @@ class _InventoryPageState extends State<InventoryPage> {
             padding: const EdgeInsets.all(8.0),
             child: Button(
               child: const Icon(FluentIcons.add, size: 24.0),
-              onPressed: () => provider.addProduct(Product()),
+              onPressed: () async => await addProduct(provider),
             ),
           ),
         ),
