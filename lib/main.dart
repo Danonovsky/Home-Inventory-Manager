@@ -1,4 +1,4 @@
-import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:home_manager/pages/wrapper_page.dart';
 import 'package:home_manager/services/store_provider.dart';
 import 'package:provider/provider.dart';
@@ -12,12 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FluentApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Home Manager',
-      theme: FluentThemeData(
-        accentColor: Colors.purple,
+      theme: ThemeData(
+        primaryColor: Colors.purple,
         brightness: Brightness.dark,
+        useMaterial3: true,
       ),
       home: ChangeNotifierProvider<StoreProvider>(
         create: (_) => StoreProvider(),
